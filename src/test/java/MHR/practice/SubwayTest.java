@@ -1,6 +1,7 @@
 package MHR.practice;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -61,11 +62,7 @@ class SubwayTest {
         builder.addMeat("Vegan Steak")
                 .addCheese("Vegan Cheese")
                 .addSalad("Lettuce");
-        try {
-            Subway sandwich = builder.build();
-            throw new Exception("Wrong exception");
-        } catch (Exception e) {
-            assertEquals("Bread is required to build a sandwich", e.getMessage());
-        }
+        Exception exception = assertThrows(IllegalStateException.class, builder::build);
+        assertEquals("Bread is required to build a sandwich", exception.getMessage());
     }
 }
