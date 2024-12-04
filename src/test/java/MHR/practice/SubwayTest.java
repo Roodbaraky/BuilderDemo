@@ -42,4 +42,17 @@ class SubwayTest {
 
     }
 
+    @Test
+    void missingToppings() {
+        Subway.SubwayBuilder builder = new Subway.SubwayBuilder();
+        builder.addBread("Italian")
+                .addMeat("Vegan Steak")
+                .addCheese("Vegan Cheese")
+                .addSalad("Lettuce");
+        Subway sandwich = builder.build();
+        ArrayList<String> expectedSauce = new ArrayList<>();
+        assertEquals(expectedSauce, sandwich.getSauce());
+        assertEquals("Subway Sandwich: Bread: Italian, Meat: Vegan Steak, Cheese: Vegan Cheese, Salad: Lettuce", sandwich.toString());
+    }
+
 }
