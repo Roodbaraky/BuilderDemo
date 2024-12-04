@@ -50,11 +50,60 @@ public class Subway {
             return this;
         }
 
+    }
 
+    public String getBread() {
+        return bread;
+    }
+
+    public List<String> getMeat() {
+        return meat;
+    }
+
+    public List<String> getCheese() {
+        return cheese;
+    }
+
+    public List<String> getSalad() {
+        return salad;
+    }
+
+    public List<String> getSauce() {
+        return sauce;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Subway Sandwich: ");
+        if (bread != null) {
+            sb.append("Bread: ").append(bread).append(", ");
+        }
+        if (!meat.isEmpty()) {
+            sb.append("Meat: ").append(String.join(", ", meat)).append(", ");
+        }
+        if (!cheese.isEmpty()) {
+            sb.append("Cheese: ").append(String.join(", ", cheese)).append(", ");
+        }
+        if (!salad.isEmpty()) {
+            sb.append("Salad: ").append(String.join(", ", salad)).append(", ");
+        }
+        if (!sauce.isEmpty()) {
+            sb.append("Sauce: ").append(String.join(", ", sauce)).append(", ");
+        }
+        if (sb.toString().endsWith(", ")) {
+            sb.setLength(sb.length() - 2);
+        }
+
+        return sb.toString();
     }
 
     public Subway(SubwayBuilder builder) {
-
+        this.bread = builder.bread;
+        this.meat = builder.meat;
+        this.cheese = builder.cheese;
+        this.salad = builder.salad;
+        this.sauce = builder.sauce;
     }
 
 }
