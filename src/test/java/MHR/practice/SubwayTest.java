@@ -55,4 +55,17 @@ class SubwayTest {
         assertEquals("Subway Sandwich: Bread: Italian, Meat: Vegan Steak, Cheese: Vegan Cheese, Salad: Lettuce", sandwich.toString());
     }
 
+    @Test
+    void missingBread() {
+        Subway.SubwayBuilder builder = new Subway.SubwayBuilder();
+        builder.addMeat("Vegan Steak")
+                .addCheese("Vegan Cheese")
+                .addSalad("Lettuce");
+        try {
+            Subway sandwich = builder.build();
+            throw new Exception("Wrong exception");
+        } catch (Exception e) {
+            assertEquals("Bread is required to build a sandwich", e.getMessage());
+        }
+    }
 }

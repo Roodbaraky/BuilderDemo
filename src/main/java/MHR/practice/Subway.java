@@ -17,11 +17,19 @@ public class Subway {
         private List<String> salad = new ArrayList<>();
         private List<String> sauce = new ArrayList<>();
 
+        //If a field is required, you can either put it as an argument in the constructor...
+        //e.g. public SubwayBuilder (String bread){}
+        //throw exception if value is null / empty
         public SubwayBuilder() {
 
         }
 
+        //... OR include validation in the build method:
+        //
         public Subway build() {
+            if (bread == null) {
+                throw new IllegalStateException("Bread is required to build a sandwich");
+            }
             return new Subway(this);
         }
 
